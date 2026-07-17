@@ -1,5 +1,6 @@
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
+import Link from 'next/dist/client/link'
 
 export default async function DashboardPage() {
   const supabase = createClient()
@@ -25,7 +26,13 @@ export default async function DashboardPage() {
         Connecté en tant que {profile?.first_name} {profile?.last_name} ({profile?.role})
       </p>
       <p className="text-xs text-gray-400 mt-4">
-        Ceci est une page temporaire. Le vrai dashboard par rôle arrive au module suivant.
+        import Link from 'next/link'
+        <Link
+          href="/dashboard/eleves"
+          className="inline-block mt-4 rounded bg-black text-white px-4 py-2 text-sm"
+        >
+          Gérer les élèves
+        </Link>
       </p>
     </div>
   )
